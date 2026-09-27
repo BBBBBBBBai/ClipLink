@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    自适应图标的背景层：铺满画布的对角渐变。
+
+    17 个色标与坐标直接取自 icon.svg 的 `bg` 渐变（gradientUnits="userSpaceOnUse"，
+    从左上 166.7,196.2 到右下 1880.2,1850.9）。用户看到的是渐变正中间那
+    约 66.7% 的圆形区域，两端最深/最亮的色标只在遮罩之外，所以铺满整张画布
+    才能让圆形边缘的取色与源图一致。
+
+    由 scripts/gen_icons.py 生成，不要手改。
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="2048"
+    android:viewportHeight="2048">
+    <path android:pathData="M0,0H2048V2048H0Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="166.7"
+                android:startY="196.2"
+                android:endX="1880.2"
+                android:endY="1850.9">
+                <item android:offset="0" android:color="#FF0B88FA" />
+                <item android:offset="0.0625" android:color="#FF0D82FA" />
+                <item android:offset="0.125" android:color="#FF1077FA" />
+                <item android:offset="0.1875" android:color="#FF126CFA" />
+                <item android:offset="0.25" android:color="#FF1662FA" />
+                <item android:offset="0.3125" android:color="#FF1A58FA" />
+                <item android:offset="0.375" android:color="#FF1E4FF9" />
+                <item android:offset="0.4375" android:color="#FF2646F9" />
+                <item android:offset="0.5" android:color="#FF2B3CF8" />
+                <item android:offset="0.5625" android:color="#FF3638F9" />
+                <item android:offset="0.625" android:color="#FF3C34F9" />
+                <item android:offset="0.6875" android:color="#FF4432F9" />
+                <item android:offset="0.75" android:color="#FF4D30FA" />
+                <item android:offset="0.8125" android:color="#FF562DFB" />
+                <item android:offset="0.875" android:color="#FF5D2BFB" />
+                <item android:offset="0.9375" android:color="#FF6329FC" />
+                <item android:offset="1" android:color="#FF6528FC" />
+            </gradient>
+        </aapt:attr>
+    </path>
+</vector>

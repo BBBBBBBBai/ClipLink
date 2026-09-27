@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    亮色配色。
+
+    夜间模式由 values-night/colors.xml 提供同名覆盖，两处的 color name 必须一一对应，
+    Theme.Material3.DayNight 会按系统深色开关自动选择。
+-->
+<resources>
+    <color name="primary">#2E6BE6</color>
+    <color name="primary_dark">#1E4FB0</color>
+    <color name="primary_container">#DCE7FF</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="on_primary_container">#001A41</color>
+
+    <!-- 卡片等抬升表面 -->
+    <color name="surface">#FFFFFF</color>
+    <!-- 页面底色：亮色下比卡片更深，暗色下反过来，保证层次一致 -->
+    <color name="surface_variant">#F4F6FB</color>
+    <color name="on_surface">#1A1C1E</color>
+    <color name="on_surface_variant">#5C6170</color>
+    <color name="outline">#D5D9E2</color>
+    <color name="outline_variant">#E4E7EE</color>
+
+    <!-- 状态色：亮色下用深色以保证白底可读 -->
+    <color name="state_ok">#1E8E5A</color>
+    <color name="state_warn">#C77700</color>
+    <color name="state_error">#C1372E</color>
+
+    <!-- 不随明暗切换的固定色 -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    诊断信息区块的背景：圆角矩形。
+
+    用 shape drawable 而不是色值，因为纯色背景的四个角是直角，
+    与圆角卡片放在一起显得突兀。
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/surface_variant" />
+    <corners android:radius="@dimen/diagnostic_corner_radius" />
+</shape>

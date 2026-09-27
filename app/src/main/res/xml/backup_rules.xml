@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android 11 及以下的备份规则：历史记录与本机设置不参与云备份 -->
+<full-backup-content>
+    <exclude domain="file" path="link_history.json" />
+    <exclude domain="sharedpref" path="cliplink_prefs.xml" />
+</full-backup-content>

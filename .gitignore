@@ -1,0 +1,30 @@
+# Gradle
+.gradle/
+build/
+local.properties
+
+# IDE
+.idea/
+*.iml
+.DS_Store
+__pycache__/
+
+# Android 构建辅助产物
+/captures
+.externalNativeBuild
+.cxx
+
+# ZCode 工作目录与本地配置
+.zcode/
+.zcodeignore
+
+# 独立验证程序的编译产物
+/build-verify
+
+# 本地打包的 APK：对外发布走 GitHub Releases，不进仓库
+/releases/
+
+# 正式版签名材料：只在本机保留，绝不入库
+keystore.properties
+*.jks
+*.keystore

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    夜间配色。与 values/colors.xml 中的 color name 一一对应。
+
+    取值遵循 Material 3 的明暗反转原则：
+    - 页面底色（surface_variant）在暗色下比卡片（surface）**更暗**，亮色下则更浅，
+      这样"底色衬托卡片"的层次关系在两种模式下都成立。
+    - primary 在暗色下提亮，保证深色背景上的对比度。
+    - 状态色同样提亮，避免深色背景上显得浑浊。
+-->
+<resources>
+    <color name="primary">#9CBAFF</color>
+    <color name="primary_dark">#7BA0F5</color>
+    <color name="primary_container">#1B3A6B</color>
+    <color name="on_primary">#002F65</color>
+    <color name="on_primary_container">#DCE7FF</color>
+
+    <!-- 卡片等抬升表面：暗色下用浅灰而非纯黑，避免与页面底色糊在一起 -->
+    <color name="surface">#1E2023</color>
+    <!-- 页面底色：暗色下比卡片更深 -->
+    <color name="surface_variant">#131517</color>
+    <color name="on_surface">#E3E5E9</color>
+    <color name="on_surface_variant">#A9AEBB</color>
+    <color name="outline">#3A3E45</color>
+    <color name="outline_variant">#2C3036</color>
+
+    <!-- 状态色：暗色下提亮 -->
+    <color name="state_ok">#5DD39E</color>
+    <color name="state_warn">#F0B45C</color>
+    <color name="state_error">#F2938C</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>

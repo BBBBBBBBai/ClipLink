@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+        夜间模式只覆盖与明暗直接相关的属性，其余全部继承 values/themes.xml 的
+        Theme.ClipLink.Base。
+
+        windowLightStatusBar 语义："状态栏背景是浅色，请用深色图标"。
+        夜间背景是深色，因此必须为 false（改用浅色图标），
+        否则图标与背景同色而不可见。
+    -->
+    <style name="Theme.ClipLink" parent="Theme.ClipLink.Base">
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
+    </style>
+
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    自适应图标（Android 8.0+）。
+
+    三层全部是 VectorDrawable，素材由 scripts/gen_icons.py 从仓库根目录的
+    icon.svg 生成。系统按当前屏幕密度栅格化，任何分辨率下都清晰，
+    APK 里也不再需要 mdpi~xxxhdpi 五套位图。
+
+    - 背景：铺满画布的对角渐变，色标取自 icon.svg 的 bg 渐变。
+    - 前景：**只含图形**（白剪贴板 / 青链接 / 绿箭头），背景透明，
+      图形外接矩形缩到画布的 62%，落在系统安全区内（约 66.7%）。
+    - monochrome：同一图形的单色版本，供 Android 13+ 主题图标使用。
+
+    为什么不把 icon.svg 整张当前景：源图里图形的外接矩形是画布的
+    63.8% x 70.2%，看着能塞进 66.7% 的安全区——但那是**矩形**口径，
+    圆形遮罩可见的是一个内切圆，按外接圆（对角线）算下来图形要占画布 94.8%，
+    直接铺满会把剪贴板顶部的挂夹与绿色箭头切掉（上一版位图实测确认）。
+    拆成"渐变背景 + 安全区内的图形"后，任何遮罩形状都不裁切内容，
+    也不会出现图层边界。
+
+    minSdk 是 26，本目录在所有受支持的设备上都会命中，不需要位图兜底。
+-->
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@drawable/ic_launcher_background" />
+    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+    <monochrome android:drawable="@drawable/ic_launcher_monochrome" />
+</adaptive-icon>

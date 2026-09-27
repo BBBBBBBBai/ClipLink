@@ -1,0 +1,144 @@
+<resources>
+    <string name="app_name">ClipLink</string>
+
+    <!-- 通知渠道 -->
+    <string name="channel_status">运行状态</string>
+    <string name="channel_status_desc">显示剪切板监测服务是否在运行</string>
+    <string name="channel_result">链接提醒</string>
+    <string name="channel_result_desc">检测到网址时提醒你</string>
+
+    <!-- 常驻通知 -->
+    <string name="status_running">正在监测剪切板</string>
+    <string name="status_running_desc">已捕获 %1$d 个链接</string>
+    <string name="status_paused">监测已暂停</string>
+    <string name="status_paused_desc">点击查看原因并修复</string>
+    <string name="status_connecting">正在连接 Shizuku…</string>
+    <string name="action_check_clipboard">检测剪切板</string>
+    <string name="action_fix_shizuku">修复</string>
+
+    <!-- 结果通知 -->
+    <string name="link_found_title">检测到网址</string>
+    <string name="action_open">打开</string>
+    <string name="action_ignore">忽略</string>
+    <string name="no_link_title">未检测到网址</string>
+    <string name="no_link_desc">当前剪切板内容里没有可识别的网址</string>
+    <string name="shizuku_problem_title">监测中断</string>
+    <string name="check_focus_timeout">未能获得焦点，无法读取剪切板。建议启动 Shizuku 后使用后台监测。</string>
+
+    <!-- 未就绪原因 -->
+    <string name="reason_need_permission">未授予 Shizuku 权限，点击授权</string>
+    <string name="reason_shizuku_not_running">Shizuku 服务未运行（重启后需重新启动）</string>
+    <string name="reason_shizuku_not_installed">未安装 Shizuku</string>
+
+    <!-- 打开失败 -->
+    <string name="open_failed_no_browser">没有可用的浏览器来打开该链接</string>
+    <string name="open_failed_invalid">链接格式无效</string>
+
+    <!-- 主界面 -->
+    <string name="main_title">ClipLink</string>
+    <string name="main_subtitle">监测剪切板中的网址，随时打开</string>
+
+    <string name="section_status">运行状态</string>
+    <string name="state_not_installed">未安装 Shizuku</string>
+    <string name="state_not_running">Shizuku 未运行</string>
+    <string name="state_no_permission">未授予权限</string>
+    <string name="state_ready">监测中</string>
+    <string name="state_stopped">已停止</string>
+    <string name="state_desc_not_installed">需要先安装 Shizuku 才能后台监测剪切板</string>
+    <string name="state_desc_not_running">请在 Shizuku 应用中点击「启动」，重启手机后需要重新启动</string>
+    <string name="state_desc_no_permission">点击下方按钮授予 Shizuku 权限</string>
+    <string name="state_desc_ready">复制含网址的内容即可自动识别</string>
+    <string name="state_desc_stopped">点击下方按钮开始监测</string>
+
+    <string name="action_start">开始监测</string>
+    <string name="action_stop">停止监测</string>
+    <string name="action_request_permission">授予 Shizuku 权限</string>
+    <string name="action_open_shizuku">打开 Shizuku</string>
+    <string name="action_install_shizuku">安装 Shizuku</string>
+    <string name="action_test">测试当前剪切板</string>
+    <string name="action_settings">设置</string>
+    <string name="action_history">历史记录</string>
+
+    <string name="section_permissions">权限</string>
+    <!-- 权限任务清单：标题 + 各状态文案，全部完成后整卡隐藏 -->
+    <string name="perm_task_shizuku">获取 Shizuku 权限</string>
+    <string name="perm_shizuku_no_permission">未授予 · 后台读取剪切板需要它</string>
+    <string name="perm_task_notification">允许通知和横幅</string>
+    <string name="perm_notif_denied">未允许通知 · 无法显示提醒</string>
+    <string name="perm_notif_no_banner">横幅未开启 · 请在通知设置中打开「横幅」</string>
+    <string name="perm_notif_need_confirm">通知与渠道已就绪 · 点「测试横幅」验证效果</string>
+    <string name="action_test_banner">测试横幅</string>
+    <string name="banner_test_title">横幅测试</string>
+    <string name="banner_test_text">看到这条横幅说明横幅提醒工作正常</string>
+    <string name="banner_test_dialog_title">测试横幅已发出</string>
+    <string name="banner_test_dialog_message">屏幕上方弹出横幅了吗？部分机型的「横幅 / 悬浮通知」开关默认关闭，需在应用通知设置里手动打开。</string>
+    <string name="banner_test_seen">看到了</string>
+    <string name="banner_test_missed">没看到，去设置</string>
+    <string name="perm_task_background">允许后台行为</string>
+    <string name="perm_battery_pending">未加入电池优化白名单 · 监测可能被省电策略中断</string>
+    <string name="perm_task_done">已完成</string>
+    <string name="action_grant">授予</string>
+    <string name="action_go_settings">去设置</string>
+    <string name="battery_list_hint">请在列表中找到 ClipLink 并允许其后台运行</string>
+    <string name="settings_open_failed">无法打开系统设置，请手动前往 设置 → 应用 → ClipLink</string>
+
+    <!-- 通知设置跳转失败提示（权限任务清单的横幅项使用） -->
+    <string name="notification_settings_unavailable">无法打开系统设置，请手动进入 设置 → 通知 找到本应用</string>
+
+    <!-- 诊断信息 -->
+    <string name="diag_shizuku_ok">Shizuku: 已连接</string>
+    <string name="action_recheck">重检</string>
+    <string name="recheck_need_running">请先开始监测再重新检测</string>
+    <string name="diag_checking">检测中…</string>
+    <string name="diag_listener_ok">事件监听: 已注册</string>
+    <string name="diag_listener_failed">事件监听: 注册失败（已启用轮询兜底）</string>
+    <string name="diag_read_ok">剪切板读取: 正常</string>
+    <string name="diag_read_empty">剪切板读取: 正常（当前无内容）</string>
+    <string name="diag_read_failed">剪切板读取: 失败（Shizuku 权限可能已失效）</string>
+    <string name="diag_reason">失败原因: %1$s</string>
+    <string name="diag_not_bound">无法连接到监测服务，请确认服务已启动</string>
+
+    <!-- 历史记录 -->
+    <string name="history_title">历史记录</string>
+    <string name="history_empty">还没有记录</string>
+    <string name="history_empty_desc">检测到的链接会出现在这里</string>
+    <string name="action_clear_all">清空</string>
+    <string name="action_clear_all_confirm">确定要清空全部历史记录吗？</string>
+    <string name="action_cancel">取消</string>
+    <string name="action_confirm">确定</string>
+    <string name="action_copy">复制</string>
+    <string name="action_delete">删除</string>
+    <string name="history_copied">链接已复制</string>
+    <string name="history_meta">%1$s · %2$s</string>
+    <string name="source_shizuku">后台监测</string>
+    <string name="source_fallback">手动检测</string>
+    <string name="source_test">测试</string>
+
+    <!-- 设置 -->
+    <string name="settings_title">设置</string>
+    <string name="setting_auto_open">检测到网址后直接打开</string>
+    <string name="setting_auto_open_desc">跳过通知确认，直接跳转浏览器。可能造成误跳转，建议保持关闭。</string>
+    <string name="setting_wifi_only">仅 Wi-Fi 下监测</string>
+    <string name="setting_wifi_only_desc">移动网络时暂停识别，减少流量与打扰。</string>
+    <string name="setting_charging_only">仅充电时监测</string>
+    <string name="setting_charging_only_desc">进一步省电，适合不常需要此功能的场景。</string>
+    <string name="setting_focus_notification">焦点通知（流体云）</string>
+    <string name="setting_focus_notification_desc">检测到网址时以流体云实时通知代替普通横幅，胶囊上可一键打开。需 ColorOS 16 及以上，旧系统自动退回普通通知。</string>
+    <string name="setting_focus_duration">停留时长</string>
+    <string name="focus_duration_seconds">%1$d 秒</string>
+    <string name="focus_channel_name">焦点通知（流体云）</string>
+    <string name="focus_channel_desc">以流体云胶囊形式提醒检测到的网址</string>
+    <string name="focus_chip_text">新链接</string>
+    <string name="focus_need_live_updates">请在系统设置中允许本应用的「实时更新」，否则流体云不生效</string>
+    <string name="focus_unsupported_hint">当前系统版本暂不支持流体云，将使用普通通知</string>
+    <string name="focus_duration_hint">胶囊未处理时按上方时长自动消失，点击「打开」或「忽略」立即消失。</string>
+    <string name="section_ignored">忽略的域名</string>
+    <string name="ignored_empty">没有忽略任何域名</string>
+    <string name="ignored_hint_desc">命中的域名不会再提醒。可在历史记录里长按添加。</string>
+    <string name="action_add_ignored">添加域名</string>
+    <string name="action_remove">移除</string>
+    <string name="ignored_add_title">忽略域名</string>
+    <string name="ignored_add_hint">example.com</string>
+
+    <string name="cd_app_icon">应用图标</string>
+</resources>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+        共享主题定义。所有颜色与属性都在这里，明暗差异由
+        Theme.ClipLink（values/ 与 values-night/ 各一份）覆盖明暗相关项。
+
+        为什么拆成 Base + 子主题：Android 的 style 在不同资源限定符下是**整体替换**而非合并，
+        若在 values-night 里重写整个 Theme.ClipLink，会丢掉全部颜色定义。
+        因此把共享部分放 Base，夜间只覆盖真正需要变的两项。
+    -->
+    <style name="Theme.ClipLink.Base" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="colorPrimaryContainer">@color/primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/on_primary_container</item>
+
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/on_surface</item>
+        <item name="colorOnSurfaceVariant">@color/on_surface_variant</item>
+        <item name="colorOutline">@color/outline</item>
+        <item name="colorOutlineVariant">@color/outline_variant</item>
+        <item name="colorSurfaceContainer">@color/surface</item>
+
+        <item name="android:colorBackground">@color/surface_variant</item>
+
+        <!--
+            Android 15（API 35）起 targetSdk >= 35 会强制 edge-to-edge，
+            这两个属性变为空操作；此处设为 transparent 是为了在更早的版本上
+            也能让内容延伸到系统栏之下（配合代码里的 setDecorFitsSystemWindows(false)）。
+        -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+
+        <!-- 本应用已完整适配深色，禁止系统做自动反色 -->
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+
+    <!--
+        主主题（亮色）。
+        windowLightStatusBar 语义是"状态栏背景为浅色，请用深色图标"，
+        亮色主题下为 true。
+    -->
+    <style name="Theme.ClipLink" parent="Theme.ClipLink.Base">
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+    </style>
+
+    <!--
+        兜底读取用的半透明主题。
+        必须是 translucent：AOSP validateStartingWindowTheme() 对 translucent 窗口
+        跳过 starting window，因此 Android 12+ 不会闪启动图标。
+        同时不能加 FLAG_NOT_FOCUSABLE —— 拿不到焦点就读不到剪切板。
+    -->
+    <style name="Theme.ClipLink.Transparent" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+
+    <!-- 打开链接用的主题：同样透明，避免跳转时闪白屏 -->
+    <style name="Theme.ClipLink.OpenLink" parent="Theme.ClipLink.Transparent" />
+
+    <!-- 标题 -->
+    <style name="TextAppearance.ClipLink.Title" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:textColor">@color/on_surface</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.ClipLink.Section" parent="TextAppearance.Material3.TitleSmall">
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.ClipLink.Body" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">@color/on_surface_variant</item>
+    </style>
+
+    <!-- 卡片 -->
+    <style name="Widget.ClipLink.Card" parent="Widget.Material3.CardView.Outlined">
+        <item name="cardBackgroundColor">@color/surface</item>
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeColor">@color/outline</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+</resources>
