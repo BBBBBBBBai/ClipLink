@@ -207,8 +207,8 @@ adb shell cmd uimode night no     # 关闭
 
 ## 7. 应用图标：从参考位图到矢量
 
-**全部是矢量**（VectorDrawable），由 `scripts/gen_icons.py` 从仓库根目录的
-`icon.svg` 生成。系统按当前屏幕密度实时栅格化，任何分辨率下都清晰，APK 里不含位图。
+**全部是矢量**（VectorDrawable），源矢量是仓库根目录的 `icon.svg`。系统按当前屏幕
+密度实时栅格化，任何分辨率下都清晰，APK 里不含位图。
 
 | 文件 | 内容 |
 |----|------|
@@ -217,12 +217,12 @@ adb shell cmd uimode night no     # 关闭
 | `drawable/ic_launcher_monochrome.xml` | 同一图形的单色版，供 Android 13+ 主题图标取 alpha |
 
 三者由 `mipmap-anydpi-v26/ic_launcher.xml` 组装成自适应图标。`minSdk` 是 26，
-自适应图标在所有受支持的设备上都生效，因此不需要位图兜底——旧的五套密度位图
-保留在 `icon-src/legacy-mipmaps/` 作对照，不参与构建（原因见该目录的 README）。
+自适应图标在所有受支持的设备上都生效，因此不需要位图兜底——旧版按密度分桶的
+五套位图已整体移除：`anydpi` 限定符的优先级高于任何密度限定符，这些位图在受支持
+的设备上一张都不会被加载。
 
-`icon.svg` 本身由 `icon-src/` 里的一组脚本从参考位图逆向生成：`trace.py` 做
-亚像素轮廓提取 + 三次贝塞尔拟合，`build_svg.py` 采样对角渐变，`render.sh` 用无头
-Edge 渲染并与原图逐像素比对。
+`icon.svg` 本身由一组脚本从参考位图逆向生成（亚像素轮廓提取 + 三次贝塞尔拟合 +
+对角渐变采样）。这些生成与校验脚本未随仓库发布，需要时可从初始提交的 git 历史恢复。
 
 **为什么把图形与背景拆成两层。** `icon.svg` 里图形的外接矩形是画布的 63.8% × 70.2%，
 看着能塞进 66.7% 的安全区——但那是**矩形**口径，圆形遮罩可见的是一个内切圆；
@@ -238,21 +238,8 @@ Edge 渲染并与原图逐像素比对。
 
 **主题图标用同一份图形的单色版**，而不是另画一套——两套形状不同会显得不统一。
 
-重新生成与预览：
-
-```bash
-python scripts/gen_icons.py       # 从 icon.svg 生成三个 VectorDrawable
-python scripts/preview_icons.py   # 合成预览，检查遮罩下的实际效果
-```
-
-预览输出在 `build-verify/icon-preview.png`：圆形遮罩 / 圆角方形遮罩 / 水滴形遮罩 /
-主题图标。水滴形（内切圆 + 一个直角）是裁切最狠的遮罩，四种形态下图形都完整落在
-安全区内，也没有图层边界。
-
-`preview_icons.py` 读的是**已生成**的 VectorDrawable（而不是源矢量 `icon.svg`），
-再翻译成等价 SVG 交给无头 Edge 渲染，因此校验的是真正打进 APK 的资源。翻译时注意
-字节序：Android 的 8 位色值是 `#AARRGGBB`，而 CSS 是 `#RRGGBBAA`，直接搬过去
-蓝紫渐变会显示成粉橙（这个坑踩过）。
+一个校验时的坑：若把这些色值翻译成 CSS/SVG 做渲染比对，注意 Android 的 8 位色值
+是 `#AARRGGBB`，而 CSS 是 `#RRGGBBAA`，直接搬过去蓝紫渐变会显示成粉橙。
 
 ## 8. 测试与验证
 
@@ -272,9 +259,6 @@ Kotlin 1.9 插件在部分 JDK + AGP 组合下，会把单元测试类输出到
 运行时报 `ClassNotFoundException`。这是工具链组合缺陷，与代码无关。
 `app/build.gradle.kts` 里已显式补上该目录（`tasks.withType<Test>` 配置），正常的
 Android Studio 环境下 `./gradlew test` 可直接运行。
-
-此外还提供了一个不依赖 Gradle 的独立验证程序（`verify/Verify.kt`），把
-`UrlExtractor.kt` 一起用 kotlinc 编译后直接运行，作为兜底。
 
 ### 真机验证清单
 
